@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Indicator, STATE, StateType } from "./Indicator";
+import { EmptyIndicator, Indicator, STATE, StateType } from "./Indicator";
 
 const Box = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ type Props = {
 export const Label = ({ children, state }: Props) => {
   return (
     <Box>
-      <Indicator state={STATE.yellow} />
+      {!!state ? <Indicator state={state} /> : <EmptyIndicator />}
       <Text>{children}</Text>
     </Box>
   );

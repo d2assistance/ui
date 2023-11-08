@@ -42,3 +42,9 @@ export const Indicator = styled.div<Props>`
 
   ${colorByState}
 `;
+
+export const EmptyIndicator = styled.div`
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+`;

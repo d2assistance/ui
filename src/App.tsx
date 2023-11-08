@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
   ${reset};
 
   body {
+    background-color: black;
+    color: white;
     font-family: "Roboto";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

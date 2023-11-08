@@ -1,5 +1,5 @@
 import React from "react";
-import { useDotaState } from "../../hooks/useDotaState";
+import { useDotaState } from "../../hooks/DotaState/useDotaState";
 import { Button } from "../Button/Button";
 import { Label } from "../Label/Label";
 import { STATE } from "../Label/Indicator";
@@ -12,6 +12,10 @@ const Container = styled.div`
   width: 280px;
 `;
 
+const Code = styled.pre`
+margin-left: 300px;
+`;
+
 export const Main = () => {
   let state = useDotaState();
   console.log(state);
@@ -22,9 +26,9 @@ export const Main = () => {
         <Button>Button</Button>
         <Label state={STATE.red}>Hello world 2</Label>
         <GoldRune />
-        <pre>
+        <Code>
           {JSON.stringify(state.data, null, 2)}
-        </pre>
+        </Code>
       </Panel>
     </Container>
   );
