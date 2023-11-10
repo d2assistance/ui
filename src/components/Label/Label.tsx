@@ -22,13 +22,13 @@ const Text = styled.p`
 
 type Props = {
   state?: StateType;
-  children: string;
+  children: React.ReactNode;
 };
 
 export const Label = ({ children, state }: Props) => {
   return (
     <Box>
-      {!!state ? <Indicator state={state} /> : <EmptyIndicator />}
+      {state !== undefined ? <Indicator state={state} /> : <EmptyIndicator />}
       <Text>{children}</Text>
     </Box>
   );

@@ -1192,6 +1192,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"howler@npm:^2.1.3":
+  version: 2.2.4
+  resolution: "howler@npm:2.2.4"
+  checksum: 74a295f56fd9b2abce122b27ed12c33fa195fb8a76832803e92d8e462a1eca803b55f44c14db052211d0cfab85c7c5249664c68d95bbbc16c775fac73866c6ef
+  languageName: node
+  linkType: hard
+
 "http-cache-semantics@npm:^4.1.1":
   version: 4.1.1
   resolution: "http-cache-semantics@npm:4.1.1"
@@ -2032,6 +2039,7 @@ __metadata:
     styled-components: "npm:^6.1.0"
     styled-reset: "npm:^4.5.1"
     typescript: "npm:^5.2.2"
+    use-sound: "npm:^4.0.1"
     vite: "npm:^4.5.0"
   languageName: unknown
   linkType: soft
@@ -2075,6 +2083,17 @@ __metadata:
   bin:
     update-browserslist-db: cli.js
   checksum: e52b8b521c78ce1e0c775f356cd16a9c22c70d25f3e01180839c407a5dc787fb05a13f67560cbaf316770d26fa99f78f1acd711b1b54a4f35d4820d4ea7136e6
+  languageName: node
+  linkType: hard
+
+"use-sound@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "use-sound@npm:4.0.1"
+  dependencies:
+    howler: "npm:^2.1.3"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: a38119eec94f1bc95771eb7b3b0e01471abc221afdae01a3f1c1cda6d872c95dfe48caf8cd89f913d3958e71718081ccbb1978049431e01df165e0ead18efa8d
   languageName: node
   linkType: hard
 
