@@ -3,43 +3,40 @@ import notificationMp3 from "./notification.mp3";
 import { useEffect, useState } from "react";
 import { useDotaState } from "../DotaState/useDotaState";
 import { STATE } from "../../components/Label/Indicator";
+import { Timings, useTimer } from "../Timer/useTimer";
 
 function calcInterval(time: number, intervalLength: number) {
   return Math.floor(time / intervalLength);
 }
 
-export function useNotification(cooldown: number, notifyBefore: number) {
-  let state = useDotaState();
 
-  const time = state.data?.map?.clock_time;
+
+export function useNotification(
+  cooldown: number,
+  notifyBefore: number,
+  timings?: Timings
+) {
+  const data = useDotaState();
   const [play] = useSound(notificationMp3, { volume: 0.25 });
-  const [prevInterval, setLastPlayedInterval] = useState<number | undefined>(undefined);
-  const timeToNotify = cooldown - notifyBefore;
+  const time = data.data?.map?.clock_time || -1000;
 
-  let notification = time && time % cooldown > timeToNotify;
-  const eventIn = time && notifyBefore - time % timeToNotify % notifyBefore;
-  const currInterval = time ? calcInterval(time, cooldown) : undefined;
+  const { active, state, timeToEvent } = useTimer(
+    cooldown,
+    notifyBefore,
+    time,
+    timings
+  );
+
+  const [prevInterval, setLastInterval] = useState<boolean>(false);
 
   useEffect(() => {
-    if (notification && currInterval !== prevInterval) {
-      play();
-      setLastPlayedInterval(currInterval);
+    if (active !== prevInterval) {
+      if (active) {
+        play();
+      }
+      setLastInterval(active);
     }
-  }, []);
+  }, [active, prevInterval]);
 
-  let colorState = undefined;
-
-  if (eventIn !== undefined) {
-    if (eventIn > notifyBefore * 2/3) {
-      colorState = STATE.green;
-    }
-    if (eventIn <= notifyBefore * 2/3 && eventIn > notifyBefore * 1/3) {
-      colorState = STATE.yellow;
-    }
-    if (eventIn <= notifyBefore * 1/3) {
-      colorState = STATE.red;
-    }
-  }
-
-  return { eventIn, notification, colorState };
+  return { active, state, timeToEvent };
 }
