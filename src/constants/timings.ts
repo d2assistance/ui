@@ -1,4 +1,4 @@
-export const NOTIFY_BEFORE = 45;
+export const NOTIFY_BEFORE = 60;
 export const BOUNTY_RUNE_COOLDOWN = 60 * 3;
 export const POWER_RUNE_COOLDOWN = 60 * 2;
 export const WIDSOME_RUNE_COOLDOWN = 60 * 7;
